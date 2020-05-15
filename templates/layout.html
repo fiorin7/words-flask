@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+    <script>
+        function showSuggestions() {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'block';
+        }
+    </script>
+    <script>
+        window.addEventListener('click', function(e) {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'none';
+        });
+    </script>
+    <title>OBDUCO</title>
+</head>
+<body>
+    <div class="site">
+        <header class="site-header">
+            <div class="site-title-logo-group">
+                <a href="/"><img class="site-logo" src="{{ url_for('static', filename='logo.svg') }}" alt=""></a>
+                <a href="/" class="site-title">OBDUCO</a>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#">Категории</a></li>
+                    <li><a href="#">За нас</a></li>
+                </ul>
+            </nav>
+        </header>
+    <div class="site-content">{% block content %}{% endblock %}</div>
+    <footer class="site-footer">
+        <p>footer, ако искаме да слагаме нещо там</p>
+    </footer>
+    </div>
+</body>
+</html>
