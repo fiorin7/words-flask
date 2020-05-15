@@ -17,7 +17,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-    return render_template("index.html")
+    background_image_url = "url_for('static', filename='header-dict.py')"
+    return render_template("index.html", background_image_url=background_image_url)
 
 def get_form():
     if request.method == "POST":
@@ -45,15 +46,11 @@ def get_lemma():
         if only_latin[i] == '=' and only_latin[i+1] == '>':
             end_idx = i
             break
-    print(start_idx)
     only_latin = only_latin[:end_idx]
-    print(f"Here it is:{only_latin}")
 
     pattern = r"^.*?\[\w*\]"
     matches = re.findall(pattern, only_latin, re.MULTILINE)
     no_pattern_matches = []
-    cleared_matches = []
-    no_number_matches = []
     
     for match in matches:
         excess = re.findall(r'\s+\[\w+\]', match)
@@ -61,15 +58,6 @@ def get_lemma():
         match = match.replace(excess, '')
         no_pattern_matches.append(match)
 
-    # for match in no_pattern_matches:
-    #     excess = re.findall(r' +\w \(.*?\)', match)
-    #     if excess:
-    #         excess = excess[0]
-    #         match = match.replace(excess, '')
-    #     no_number_matches.append(match)
-    
-    # for match in no_number_matches:
-    #     cleared_matches.append(match.lower())
 
 
 
