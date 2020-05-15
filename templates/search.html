@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+    <script>
+        function showSuggestions() {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'block';
+        }
+    </script>
+    <script>
+        window.addEventListener('click', function(e) {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'none';
+        });
+    </script>
+    <title>OBDUCO</title>
+</head>
+<body>
+    <div class="site " >
+        <header class="site-header">
+            <div class="site-title-logo-group">
+                <a href="/obduco-site"><img class="site-logo" src="/obduco-site/images/logo.svg" alt=""></a>
+                <a href="/obduco-site" class="site-title">OBDUCO</a>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#">Категории</a></li>
+                    <li><a href="#">За нас</a></li>
+                </ul>
+            </nav>
+        </header>
+    <div class="site-content"><div class="page-search-results">
+    <div class="search-group-container">
+        <div class="page-search-group">
+            <input type="text" class="page-search" value="{{ word }}" placeholder="Дума">
+            <button type="button" class="page-search-button">
+                <i class="fas fa-search"></i>
+                <span>Търси</span>
+            </button>
+        </div>
+    </div>
+    <div class="form-recognition-suggestions">
+        {% for match in cleared_matches %}
+        <div class="form-suggestion">
+            <span>Виж всички примери с тази дума</span>
+            <p class="suggestion-lemma suggestion-lemma-one">{{ match }}</p>
+            <span>Към думата<i class="fas fa-book-open"></i></span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="exact-match-block">
+        <div class="exact-title-container"><h1 class="exact-title">Всички примери с точно съвпадение "actum"</h1></div>
+        
+        <div class="exact-match">
+            <div class="match-header">
+                <h2 class="match-lemma">canis, is, m</h2>
+                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
+            </div>
+            <ul class="matches-list">
+                <li><span class="match-example">actum пример 1.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+                <li><span class="match-example">пример actum пример 1.2</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+                <li><span class="match-example">пример actum 1.3</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+            </ul>
+        </div>
+
+        <div class="exact-match">
+            <div class="match-header">
+                <h2 class="match-lemma">homo, -inis, m</h2>
+                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
+            </div>
+            <ul class="matches-list">
+                <li><span class="match-example">пример actum 2.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+            </ul>
+        </div>
+
+        <div class="exact-match">
+            <div class="match-header">
+                <h2 class="match-lemma">facio, feci, factus, 3</h2>
+                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
+            </div>
+            <ul class="matches-list">
+                <li><span class="match-example">пример actum 3.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+                <li><span class="match-example">пример actum пример пример 3.2</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+            </ul>
+        </div>
+
+    </div>
+</div></div>
+    <footer class="site-footer">
+        <p>footer, ако искаме да слагаме нещо там</p>
+    </footer>
+    </div>
+</body>
+</html>

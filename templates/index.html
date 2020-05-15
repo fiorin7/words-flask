@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/obduco-site/css/site.css"> -->
+    <script>
+        function showSuggestions() {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'block';
+        }
+    </script>
+    <script>
+        window.addEventListener('click', function(e) {
+            var suggestions = document.getElementsByClassName("main-suggestion-box");
+            suggestions[0].style.display = 'none';
+        });
+    </script>
+    <title>OBDUCO</title>
+</head>
+<body>
+    <div class="site current-page-home" style="background-image: url('/obduco-site/images/header-dict.jpg')">
+        <header class="site-header">
+            <div class="site-title-logo-group">
+                <a href="/"><img class="site-logo" src="/obduco-site/images/logo.svg" alt=""></a>
+                <a href="/" class="site-title">OBDUCO</a>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#">Категории</a></li>
+                    <li><a href="#">За нас</a></li>
+                </ul>
+            </nav>
+        </header>
+    <div class="site-content"><div class="hero-search">
+    <div class="hero-search-contents">
+        <div class="main-title-description">
+            <p class="main-title">Две думи какво прави сайтът</p>
+            <p class="main-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p class="main-desc">Eos iure fugiat officia labore optio.</p>
+        </div>
+        <form class="main-search-group" method="GET" action="/search">
+            <input type="text" id="main-search" name="word" class="main-search" oninput="showSuggestions()" placeholder="Дума">
+            <button type="submit" class="main-search-button">
+                <a href="/obduco-site/search">
+                    <i class="fas fa-search"></i>
+                    <span>Търси</span>
+                </a>
+            </button>
+        </form>
+        <div class="main-suggestion-box">
+            <p>предложение 1</p>
+            <p>предложение 2</p>
+            <p>предложение 3</p>
+            <p>предложение 4</p>
+        </div>
+    </div>
+</div>
+
+</div>
+    <footer class="site-footer">
+        <p>footer, ако искаме да слагаме нещо там</p>
+    </footer>
+    </div>
+</body>
+</html>
