@@ -1,3 +1,9 @@
+FROM alpine as source
+
+WORKDIR /app
+COPY . /app
+RUN rm -rf words docker
+
 FROM python:3.8-buster
 
 RUN pip install pipenv \
@@ -16,7 +22,7 @@ WORKDIR /app
 COPY Pipfile* /app/
 RUN pipenv install
 
-COPY . /app
+COPY --from=source /app /app
 
 EXPOSE 5000
 
