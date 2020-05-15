@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/obduco-site/css/site.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
     <script>
         function showSuggestions() {
             var suggestions = document.getElementsByClassName("main-suggestion-box");
@@ -19,10 +19,10 @@
     <title>OBDUCO</title>
 </head>
 <body>
-    <div class="site current-page-home" style="background-image: url('/obduco-site/images/header-dict.jpg')">
+    <div class="site current-page-home" style="background-image: url({{ url_for('static', filename='header-dict.jpg') }})">
         <header class="site-header">
             <div class="site-title-logo-group">
-                <a href="/"><img class="site-logo" src="/obduco-site/images/logo.svg" alt=""></a>
+                <a href="/"><img class="site-logo" src="{{ url_for('static', filename='logo.svg') }}" alt=""></a>
                 <a href="/" class="site-title">OBDUCO</a>
             </div>
             <nav class="site-nav">
