@@ -1,0 +1,9 @@
+version: '3.6'
+
+services:
+  app:
+    image: gcr.io/words-flask/words-flask
+    build:
+      context: .
+    ports:
+      - 5000:5000

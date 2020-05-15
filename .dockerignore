@@ -1,0 +1,6 @@
+words/.git
+.git
+.gitignore
+config.yaml
+Dockerfile
+docker-compose.yaml

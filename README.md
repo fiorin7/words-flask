@@ -44,3 +44,31 @@ pipenv run python hello.py
 ```
 
 to start the flask server.
+
+# Building and deploying
+
+To build the docker image, you must first build [Whitakers
+Words](https://mk270.github.io/whitakers-words/) for linux.
+
+Clone the words project into `./words` directory in this project then
+return their build instructions.
+
+When this is done, run
+
+``` shell
+docker-compose build
+```
+
+to build the image.
+
+Then run
+
+``` shell
+docker-compose push
+```
+
+to push the new version to Google Cloud platform.
+
+[Update the
+image](https://console.cloud.google.com/run/deploy/europe-west1/words-flask?project=words-flask)
+used by the google service to your latest version and redeploy.
