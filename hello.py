@@ -20,13 +20,6 @@ def index():
     background_image_url = "url_for('static', filename='header-dict.py')"
     return render_template("index.html", background_image_url=background_image_url)
 
-def get_form():
-    if request.method == "POST":
-        req = request.form
-        print(req)
-
-    return redirect(request.url)
-
 
 @app.route('/search')
 def get_lemma():
