@@ -23,6 +23,7 @@ Configure paths for the words binary in `config.yaml`.
 cp config.example.yaml config.yaml
 ```
 
+Copy config.example.yaml. The copy is where you write your personal configurations.
 Open this file and update the paths.  `words.cwd` is the path to the
 directory where the data files are located (the main directory of
 words).  `words.bin` is the binary, for example `words.exe` *relative*
