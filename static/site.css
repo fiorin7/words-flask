@@ -224,7 +224,7 @@ a {
     .form-recognition-suggestions .form-suggestion .suggestion-lemma {
       margin: 0 2em;
       font-size: 1.2em; }
-    .form-recognition-suggestions .form-suggestion span {
+    .form-recognition-suggestions .form-suggestion span, .form-recognition-suggestions .form-suggestion a {
       padding: 0.7em 0.2em;
       border-radius: 0.4em;
       position: absolute;
@@ -234,11 +234,11 @@ a {
       min-width: 16em;
       text-align: center;
       font-size: 0.9em; }
-      .form-recognition-suggestions .form-suggestion span:first-child {
+      .form-recognition-suggestions .form-suggestion span {
         left: -1.7em; }
-      .form-recognition-suggestions .form-suggestion span:last-child {
+      .form-recognition-suggestions .form-suggestion a {
         right: -1.7em; }
-      .form-recognition-suggestions .form-suggestion span i {
+      .form-recognition-suggestions .form-suggestion a i {
         margin-left: 0.7em;
         position: relative;
         top: 0.1em; }
@@ -309,3 +309,13 @@ a {
       display: inline-block;
       margin-left: 0.5em;
       color: #80634d; }
+
+.lemma-entry {
+  width: 35em;
+  margin: 5em auto;
+  background-color: #c8dcf0;
+  color:black;
+  padding: 1.5em;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0.3em rgb(195, 200, 207);
+}

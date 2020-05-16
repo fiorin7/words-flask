@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% for entry in entries %}
+<div class="lemma-entry"><p>{{ entry }}</p></div>
+{% endfor %}
+
+{% endblock %}
