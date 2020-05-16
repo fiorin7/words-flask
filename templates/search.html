@@ -2,22 +2,28 @@
 {% block content %}
     <div class="site-content"></div><div class="page-search-results">
     <div class="search-group-container">
-        <div class="page-search-group">
-            <input type="text" class="page-search" value="{{ word }}" placeholder="Дума">
-            <button type="button" class="page-search-button">
+        <form class="page-search-group">
+            <input type="text" class="page-search" value="{{ word }}" name="word" placeholder="Дума" method="GET" action="/search">
+            <button type="submit" class="page-search-button">
                 <i class="fas fa-search"></i>
                 <span>Търси</span>
             </button>
-        </div>
+        </form>
     </div>
     <div class="form-recognition-suggestions">
-        {% for match in cleared_matches %}
-        <div class="form-suggestion">
-            <span>Виж всички примери с тази дума</span>
-            <p class="suggestion-lemma suggestion-lemma-one">{{ match }}</p>
-            <span>Към думата<i class="fas fa-book-open"></i></span>
+        {% if not no_pattern_dict %}
+        <div class="form-suggestion" style='padding-top: 1em;'>
+            <p class="suggestion-lemma">Няма съвпадение. (-v.v-) Ако търсиш местоимение, те още не работят.</p>
         </div>
-        {% endfor %}
+        {% else %}
+            {% for match, title in no_pattern_dict.items() %}
+            <div class="form-suggestion">
+                <span>Виж всички примери с тази дума</span>
+                <p class="suggestion-lemma">{{ match }}</p>
+                <a href='entry/{{ title }}'>Към думата<i class="fas fa-book-open"></i></a>
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
     <div class="exact-match-block">
         <div class="exact-title-container"><h1 class="exact-title">Всички примери с точно съвпадение "{{ word }}"</h1></div>
