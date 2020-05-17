@@ -13,7 +13,7 @@
     <div class="form-recognition-suggestions">
         {% if not no_pattern_dict %}
         <div class="form-suggestion" style='padding-top: 1em;'>
-            <p class="suggestion-lemma">Няма съвпадение. (-v.v-) Ако търсиш местоимение, те още не работят. А също и търсенето с диакритики.</p>
+            <p class="suggestion-lemma">Няма съвпадение. (-v.v-) Ако търсиш местоимение, те още не работят.</p>
         </div>
         {% else %}
             {% for match, title in no_pattern_dict.items() %}
@@ -35,7 +35,7 @@
         </div>
 
         <div class="disclaimer"><p>Понеже нямаме XML файлове, в които да е тагнато къде започва и къде свършва примерът, засега го направих да излиза цялата статия, в която се съдържа търсената форма.</p>
-        <p>Веднъж щом тагнем формите в XML файловете, би трябвало да има още повече съвпадения от сега. Пробвайте 'magna, patrem, canis, parte'.</p>
+        <p>Веднъж щом тагнем формите в XML файловете, би трябвало да има още повече съвпадения от сега. Пробвайте 'magna, patrem, canis, parte'. Btw. търсенето с диакритики още не работи :(.</p>
         <p>Сега направих просто резултатите да са на една страница, но в крайния продукт, ако са много, ще бъдат на повече страници.</p></div>
         {% for title, matches in exact_matches_examples.items() %}
         <div class="exact-match">

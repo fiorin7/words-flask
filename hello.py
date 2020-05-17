@@ -39,8 +39,8 @@ def get_exact_examples(form):
     for lemma, entries in dict_dict.items():
         for entry in entries:
             if re.search(fr'\b{unidecode(form)}\b', entry):
-                replaced = f'<span class="form-example-exact-match">{form}</span>'
-                entry = entry.replace(form, replaced)
+                replaced = f'<span class="form-example-exact-match">{unidecode(form)}</span>'
+                entry = entry.replace(unidecode(form), replaced)
                 exact_matches_examples.setdefault(lemma, [])
                 exact_matches_examples[lemma].append(entry)
     return exact_matches_examples
