@@ -38,7 +38,7 @@ def get_exact_examples(form):
     exact_matches_examples = {}
     for lemma, entries in dict_dict.items():
         for entry in entries:
-            if re.search(fr'\b{form}\b', entry):
+            if re.search(fr'\b{unidecode(form)}\b', entry):
                 replaced = f'<span class="form-example-exact-match">{form}</span>'
                 entry = entry.replace(form, replaced)
                 exact_matches_examples.setdefault(lemma, [])
@@ -59,7 +59,7 @@ def get_lemma():
     if not word:
         word = 'Нищо-не-си-написал-ей'
     p = subprocess.Popen([config['words']['bin']], stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd = config['words']['cwd'])
-    out, err = p.communicate(word.encode())
+    out, err = p.communicate(unidecode(word).encode())
     full_result = out.decode()
     # print(full_result)
 
