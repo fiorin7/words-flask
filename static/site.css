@@ -142,9 +142,8 @@ a {
     letter-spacing: 0.07em;
     background-color: #003b6d;
     border: none;
-    border-radius: 0.2em; }
-    .main-search-group .main-search-button a {
-      color: white; }
+    border-radius: 0.2em;
+      color: white;}
 
 .main-suggestion-box {
   background-color: white;
@@ -267,9 +266,19 @@ a {
       background-color: rgba(0, 0, 0, 0.815); }
   .exact-match-block .exact-match {
     width: 45em;
-    border-bottom: 0.2em solid black;
     margin: 2em auto 3em;
-    padding: 1em 5em; }
+    padding: 1em 5em; 
+    position: relative;}
+    .exact-match-block .exact-match:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 102%;
+      height: 0.1em;
+      width: 40%;
+      left: 30%;
+      background-color: #3b2f26;
+    }
   .exact-match-block .match-header {
     display: flex; }
     .exact-match-block .match-header .match-lemma {
@@ -325,7 +334,7 @@ a {
   padding: 1em 1.5em;
   background-color: rgb(241, 233, 214);
   border-radius: 0.3em;
-  margin: 0 auto;
+  margin: 1em auto 0;
 }
 
 .form-example-exact-match {
