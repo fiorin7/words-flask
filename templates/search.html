@@ -26,40 +26,29 @@
         {% endif %}
     </div>
     <div class="exact-match-block">
-        <div class="exact-title-container"><h1 class="exact-title">Всички примери с точно съвпадение "{{ word }}"</h1></div>
-        
-        <div class="exact-match">
-            <div class="match-header">
-                <h2 class="match-lemma">canis, is, m</h2>
-                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
-            </div>
-            <ul class="matches-list">
-                <li><span class="match-example">actum пример 1.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
-                <li><span class="match-example">пример actum пример 1.2</span><span> - </span><span class="match-translation">някакъв превод</span></li>
-                <li><span class="match-example">пример actum 1.3</span><span> - </span><span class="match-translation">някакъв превод</span></li>
-            </ul>
+        <div class="exact-title-container">
+            {% if not exact_matches_examples %}
+                <h1 class="exact-title">Няма намерени примери с точно съвпадение "{{ word }}"</h1>
+            {% else %}
+                <h1 class="exact-title">Всички примери с точно съвпадение "{{ word }}"</h1>
+            {% endif %}
         </div>
 
+        <div class="disclaimer"><p>Понеже нямаме XML файлове, в които да е тагнато къде започва и къде свършва примерът, засега го направих да излиза цялата статия, в която се съдържа търсената форма.</p>
+        <p>Веднъж щом тагнем формите в XML файловете, би трябвало да има още повече съвпадения от сега. Пробвайте 'magna, patrem, canis, parte'.</p></div>
+        {% for title, matches in exact_matches_examples.items() %}
         <div class="exact-match">
             <div class="match-header">
-                <h2 class="match-lemma">homo, -inis, m</h2>
-                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
+                <h2 class="match-lemma">{{ title }}</h2>
+                <a href='entry/{{ title }}'>Към думата<i class="fas fa-book-open"></i></a>
             </div>
             <ul class="matches-list">
-                <li><span class="match-example">пример actum 2.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
+                {% for match in matches %}
+                <li><span class="match-example">{{ match|safe }}</span></li>
+                {% endfor %}
             </ul>
         </div>
-
-        <div class="exact-match">
-            <div class="match-header">
-                <h2 class="match-lemma">facio, feci, factus, 3</h2>
-                <a href="#">Към думата<i class="fas fa-book-open"></i></a>
-            </div>
-            <ul class="matches-list">
-                <li><span class="match-example">пример actum 3.1</span><span> - </span><span class="match-translation">някакъв превод</span></li>
-                <li><span class="match-example">пример actum пример пример 3.2</span><span> - </span><span class="match-translation">някакъв превод</span></li>
-            </ul>
-        </div>
+        {% endfor %}
 
     </div>
 </div>

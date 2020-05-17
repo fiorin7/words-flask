@@ -9,7 +9,7 @@ from unidecode import unidecode
 with open("config.yaml") as stream:
     try:
         config = yaml.safe_load(stream)
-        print(config)
+        # print(config)
     except yaml.YAMLError as exc:
         print(exc)
 
@@ -29,21 +29,31 @@ for entry in dict_file:
         dict_dict.setdefault(no_diacritics_lemma, [])
         if no_diacritics_lemma not in lemmas:
             lemmas.append(no_diacritics_lemma)
+        if entry[-1] == '\n':
+            entry = entry[:-1]
         dict_dict[no_diacritics_lemma].append(entry)
 
+# examples ####################################################################
+def get_exact_examples(form):
+    exact_matches_examples = {}
+    for lemma, entries in dict_dict.items():
+        for entry in entries:
+            if re.search(fr'\b{form}\b', entry):
+                replaced = f'<span class="form-example-exact-match">{form}</span>'
+                entry = entry.replace(form, replaced)
+                exact_matches_examples.setdefault(lemma, [])
+                exact_matches_examples[lemma].append(entry)
+    return exact_matches_examples
 ################################################################################
 
 app = Flask(__name__)
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/')
 def index():
     return render_template("index.html")
 
 
 @app.route('/search')
-
-def get_examples(form):
-    pass
 def get_lemma():
     word = request.args.get('word')
     if not word:
@@ -51,7 +61,7 @@ def get_lemma():
     p = subprocess.Popen([config['words']['bin']], stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd = config['words']['cwd'])
     out, err = p.communicate(word.encode())
     full_result = out.decode()
-    print(full_result)
+    # print(full_result)
 
     only_latin = ''
     start_idx = None
@@ -65,11 +75,11 @@ def get_lemma():
             end_idx = i
             break
     only_latin = only_latin[:end_idx]
-    print(only_latin)
+    # print(only_latin)
 
     pattern = r"^.*?\[\w*\]"
     matches = re.findall(pattern, only_latin, re.MULTILINE)
-    print(matches)
+    # print(matches)
     no_pattern_matches = []
     
     for match in matches:
@@ -77,17 +87,16 @@ def get_lemma():
         excess = excess[0]
         match = match.replace(excess, '')
         no_pattern_matches.append(match)
-    print(no_pattern_matches)
+    # print(no_pattern_matches)
     no_pattern_dict = {}
 
     for match in no_pattern_matches:
         split_match = re.split(r', | ', match)
         if split_match[0]:
             no_pattern_dict[match] = split_match[0]
-
     
 
-    return render_template("search.html", no_pattern_dict=no_pattern_dict, word=word)
+    return render_template("search.html", no_pattern_dict=no_pattern_dict, word=word, exact_matches_examples=get_exact_examples(word))
 
 
 
